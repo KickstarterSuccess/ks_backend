@@ -10,11 +10,11 @@ def create_app():
     app = Flask(__name__)
 
     @app.route("/")
-    def index():
-        return "<h1>Welcome to the server!</h1>"
+    def main():
+        return "Welcome to the server!"
 
     @app.route("/predict", methods=["GET", "POST"])
-    def main():
+    def predict():
         '''
         App route for receiving front end predictive data and
         generating a prediction. Returns prediction as a string
