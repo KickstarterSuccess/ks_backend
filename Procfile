@@ -1,1 +1,1 @@
-web: gunicorn ks_flask:app
+web: gunicorn ks_flask:app -t 120
