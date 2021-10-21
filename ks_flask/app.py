@@ -1,4 +1,5 @@
 import pickle
+from flask_cors import cross_origin
 from flask import Flask, request, jsonify
 from .preprocessing import get_dur, get_monthyear, predict_to_string
 
