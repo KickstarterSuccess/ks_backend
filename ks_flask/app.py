@@ -1,5 +1,5 @@
 import pickle
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from .preprocessing import get_dur, get_monthyear, predict_to_string
 
 def create_app():
@@ -8,6 +8,10 @@ def create_app():
     '''
 
     app = Flask(__name__)
+
+    @app.route("/")
+    def index():
+        return "<h1>Welcome to the server!</h1>"
 
     @app.route("/predict", methods=["GET", "POST"])
     def main():
@@ -43,6 +47,6 @@ def create_app():
         prediction = predict_to_string(prediction)
 
         # Return prediction (may need reformatting)
-        return prediction
+        return jsonify(prediction)
 
     return app
