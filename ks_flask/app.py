@@ -49,4 +49,9 @@ def create_app():
         # Return prediction (may need reformatting)
         return jsonify(prediction)
 
+    @app.route("/test", methods=["GET", "POST"])
+    def test():
+        dummydata = {'name':1, 'country':2}
+        return jsonify(dummydata)
+
     return app
