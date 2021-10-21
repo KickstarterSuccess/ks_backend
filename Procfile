@@ -1,1 +1,1 @@
-web: gunicorn ks_flask:app -t 120
+web: gunicorn --bind 0.0.0.0:$PORT ks_flask:app
