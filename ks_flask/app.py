@@ -10,10 +10,12 @@ def create_app():
     app = Flask(__name__)
 
     @app.route("/")
+    @cross_origin()
     def main():
         return "Welcome to the server!"
 
     @app.route("/predict", methods=["GET", "POST"])
+    @cross_origin()
     def predict():
         '''
         App route for receiving front end predictive data and
@@ -49,13 +51,11 @@ def create_app():
         # JSONify the prediction
         prediction = jsonify({'prediction': prediction})
 
-        # Enable Access-Control-Allow-Origin
-        prediction.headers.add("Access-Control-Allow-Origin", "*")
-
         # Return prediction (may need reformatting)
         return prediction
 
     @app.route("/test", methods=["GET", "POST"])
+    @cross_origin()
     def test():
         dummydata = {'name':1, 'country':2}
         return jsonify(dummydata)
