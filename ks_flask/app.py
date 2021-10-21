@@ -46,8 +46,14 @@ def create_app():
         # Covert array to string response
         prediction = predict_to_string(prediction)
 
+        # JSONify the prediction
+        prediction = jsonify({'prediction': prediction})
+
+        # Enable Access-Control-Allow-Origin
+        prediction.headers.add("Access-Control-Allow-Origin", "*")
+
         # Return prediction (may need reformatting)
-        return jsonify({'prediction': prediction})
+        return prediction
 
     @app.route("/test", methods=["GET", "POST"])
     def test():
