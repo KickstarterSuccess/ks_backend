@@ -1,5 +1,4 @@
 import pickle
-from flask_cors import CORS
 from flask import Flask, request, jsonify
 from .preprocessing import get_dur, get_monthyear, predict_to_string
 
@@ -9,7 +8,6 @@ def create_app():
     '''
 
     app = Flask(__name__)
-    CORS(app)
 
     @app.route("/")
     def main():
