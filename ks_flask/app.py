@@ -49,7 +49,7 @@ def create_app():
         prediction = predict_to_string(prediction)
 
         # Return prediction (may need reformatting)
-        return jsonify(prediction)
+        return jsonify({'prediction': prediction})
 
     @app.route("/test", methods=["GET", "POST"])
     def test():
