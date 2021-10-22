@@ -55,14 +55,14 @@ def create_app():
         # Load locally stored pickled model
         model = pickle.load(open('ks_flask/model','rb'))
         
-        # Create prediction from model
-        prediction = model.predict(X_pred)
+        # # Create prediction from model
+        # prediction = model.predict(X_pred)
 
-        # Covert array to string response
-        prediction = predict_to_string(prediction)
+        # # Covert array to string response
+        # prediction = predict_to_string(prediction)
 
-        # JSONify the prediction
-        prediction = jsonify({'prediction': prediction})
+        # # JSONify the prediction
+        # prediction = jsonify({'prediction': prediction})
 
         # Return prediction 
         return X_pred
