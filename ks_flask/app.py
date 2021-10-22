@@ -56,12 +56,9 @@ def create_app():
         # prediction = jsonify({'prediction': prediction})
         # # Return prediction (may need reformatting)
         # return prediction
-        testdic = {}
-        counter = 0
-        for x in X_pred:
-            counter = counter + 1
-            testdic['test' + str(counter)] = x
-        return jsonify(testdic)
+        test = {'prediction':'SUCCESS!!!'}
+        return jsonify(test)
+
 
     @app.route("/test", methods=["GET", "POST"])
     @cross_origin()
