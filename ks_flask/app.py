@@ -64,7 +64,9 @@ def create_app():
         # # JSONify the prediction
         # prediction = jsonify({'prediction': prediction})
 
-        # Return prediction 
-        return X_pred_list
+        # Return prediction
+        
+        return {'test': X_pred_list}
+        
 
     return app
