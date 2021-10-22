@@ -1,12 +1,12 @@
 import pandas as pd
 
-def get_dur(launch, deadline):
+def get_dur(date, deadline):
     '''
     Calculate time delta from launch and deadline dates
     '''
-    launch_dt = pd.to_datetime(launch)
+    date_dt = pd.to_datetime(date)
     deadline_dt = pd.to_datetime(deadline)
-    duration = deadline_dt - launch_dt
+    duration = deadline_dt - date_dt
     duration = duration.dt.days
 
     return duration
