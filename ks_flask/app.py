@@ -1,4 +1,5 @@
 import pickle
+import sklearn
 import numpy as np
 from flask_cors import CORS, cross_origin
 from flask import Flask, request, jsonify
