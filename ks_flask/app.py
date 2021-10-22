@@ -13,8 +13,8 @@ def create_app():
     app = Flask(__name__)
     cors = CORS(app)
     app.config['CORS_HEADERS'] = 'Content-Type'
-    API_SECRET_KEY = os.getenv("API_SECRET_KEY")
-    
+    app.secret_key =os.getenv("API_SECRET_KEY")
+
     @app.route("/")
     @cross_origin()
     
