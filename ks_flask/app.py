@@ -1,5 +1,5 @@
 import pickle
-from flask_cors import cross_origin
+from flask_cors import CORS, cross_origin
 from flask import Flask, request, jsonify
 from .preprocessing import get_dur, get_monthyear, predict_to_string
 
@@ -9,9 +9,11 @@ def create_app():
     '''
 
     app = Flask(__name__)
-
+    cors = CORS(app)
+    app.config['CORS_HEADERS'] = 'Content-Type'
     @app.route("/")
     @cross_origin()
+    
     def main():
         return "Welcome to the server!"
 
