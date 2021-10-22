@@ -26,35 +26,33 @@ def create_app():
         # Retrieve data from front end
         data = request.get_json()
 
-        # # Run feature engineering functions
-        # data['duration'] = get_dur(data['launch'], data['deadline'])
-        # data['month'], data['year'] = get_monthyear(data['launch'])
+        # Run feature engineering functions
+        data['duration'] = get_dur(data['date'], data['deadline'])
+        data['month'], data['year'] = get_monthyear(data['date'])
 
-        # # Define desired variables in X_pred order
-        # X_vars = ['goal','month','year','duration','country','currency','category']
+        # Define desired variables in X_pred order
+        X_vars = ['goal','month','year','duration','country','currency','category']
 
-        # # Create empty list for populating X_pred
-        # X_pred = []
+        # Create empty list for populating X_pred
+        X_pred = []
 
-        # # Iterate over X_vars to populate X_pred with key value pairs
-        # for x in X_vars:
-        #     X_pred.append(data[x])
+        # Iterate over X_vars to populate X_pred with key value pairs
+        for x in X_vars:
+            X_pred.append(data[x])
 
-        # # Load locally stored pickled model
-        # model = pickle.load(open('model','rb'))
+        # Load locally stored pickled model
+        model = pickle.load(open('model','rb'))
 
-        # # Create prediction from model
-        # prediction = model.predict(X_pred)
+        # Create prediction from model
+        prediction = model.predict(X_pred)
 
-        # # Covert array to string response
-        # prediction = predict_to_string(prediction)
+        # Covert array to string response
+        prediction = predict_to_string(prediction)
 
-        # # JSONify the prediction
-        # prediction = jsonify({'prediction': prediction})
-
-        test = {'name':1, 'country':2}
+        # JSONify the prediction
+        prediction = jsonify({'prediction': prediction})
         # Return prediction (may need reformatting)
-        return test
+        return prediction
 
     @app.route("/test", methods=["GET", "POST"])
     @cross_origin()
