@@ -1,4 +1,5 @@
 import pickle
+import os
 from sklearn.ensemble import GradientBoostingClassifier
 import numpy as np
 from flask_cors import CORS, cross_origin
@@ -12,6 +13,8 @@ def create_app():
     app = Flask(__name__)
     cors = CORS(app)
     app.config['CORS_HEADERS'] = 'Content-Type'
+    API_SECRET_KEY = os.getenv("API_SECRET_KEY")
+    
     @app.route("/")
     @cross_origin()
     
@@ -64,7 +67,7 @@ def create_app():
             # JSONify the prediction
             prediction = json.dumps({'prediction': prediction})
             session['prediction'] = prediction
-            
+
             return redirect(url_for('predict'))
         if request.method == 'GET':
             # Return prediction
