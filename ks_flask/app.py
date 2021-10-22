@@ -52,7 +52,7 @@ def create_app():
         X_pred = X_pred.reshape(1,-1)
 
         # Load locally stored pickled model
-        model = pickle.load(open('model.pkl','rb'))
+        model = pickle.load(open('ks_flask/model','rb'))
         
         # Create prediction from model
         prediction = model.predict(X_pred)
