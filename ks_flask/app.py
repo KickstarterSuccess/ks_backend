@@ -26,10 +26,11 @@ def create_app():
         # Retrieve data from front end
         data = request.get_json()
 
-        # Run feature engineering functions
-        data['duration'] = get_dur(data['date'], data['deadline'])
-        data['month'], data['year'] = get_monthyear(data['date'])
-
+        # # Run feature engineering functions
+        # data['duration'] = get_dur(data['date'], data['deadline'])
+        # data['month'], data['year'] = get_monthyear(data['date'])
+        data['duration'] = 'test1'
+        data['month'], data['year'] = 'test2', 'test3'
         # Define desired variables in X_pred order
         X_vars = ['goal','month','year','duration','country','currency','category']
 
