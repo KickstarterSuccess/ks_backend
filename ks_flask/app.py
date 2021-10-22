@@ -43,19 +43,25 @@ def create_app():
         for x in X_vars:
             X_pred.append(data[x])
 
-        # Load locally stored pickled model
-        model = pickle.load(open('model','rb'))
+        # # Load locally stored pickled model
+        # model = pickle.load(open('model','rb'))
 
-        # Create prediction from model
-        prediction = model.predict(X_pred)
+        # # Create prediction from model
+        # prediction = model.predict(X_pred)
 
-        # Covert array to string response
-        prediction = predict_to_string(prediction)
+        # # Covert array to string response
+        # prediction = predict_to_string(prediction)
 
-        # JSONify the prediction
-        prediction = jsonify({'prediction': prediction})
-        # Return prediction (may need reformatting)
-        return prediction
+        # # JSONify the prediction
+        # prediction = jsonify({'prediction': prediction})
+        # # Return prediction (may need reformatting)
+        # return prediction
+        testdic = {}
+        counter = 0
+        for x in X_pred:
+            counter = counter + 1
+            testdic['test' + str(counter)] = x
+        return jsonify(testdic)
 
     @app.route("/test", methods=["GET", "POST"])
     @cross_origin()
