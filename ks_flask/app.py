@@ -66,7 +66,7 @@ def create_app():
 
         # Return prediction
         test = {}
-        for i in len(X_vars):
+        for i in range(0, len(X_vars)):
             test[X_vars[i]] = X_pred_list[i]
         return jsonify(test)
         
