@@ -1,5 +1,5 @@
 import pickle
-import sklearn
+from sklearn.ensemble import GradientBoostingClassifier
 import numpy as np
 from flask_cors import CORS, cross_origin
 from flask import Flask, json, request, jsonify
