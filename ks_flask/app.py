@@ -2,7 +2,7 @@ import pickle
 from sklearn.ensemble import GradientBoostingClassifier
 import numpy as np
 from flask_cors import CORS, cross_origin
-from flask import Flask, json, request, jsonify
+from flask import Flask, request, jsonify, json
 from .preprocessing import get_dur, get_monthyear, predict_to_string
 
 def create_app():
@@ -62,7 +62,7 @@ def create_app():
         prediction = predict_to_string(prediction)
 
         # JSONify the prediction
-        prediction = jsonify({'prediction': prediction})
+        prediction = json.dumps({'prediction': prediction})
 
         # Return prediction
         return jsonify({'prediction': prediction})
