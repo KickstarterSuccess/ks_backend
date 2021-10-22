@@ -7,7 +7,7 @@ def get_dur(date, deadline):
     date_dt = pd.to_datetime(date)
     deadline_dt = pd.to_datetime(deadline)
     duration = deadline_dt - date_dt
-    duration = duration.dt.days
+    duration = duration.days
 
     return duration
 
