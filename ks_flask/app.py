@@ -36,7 +36,7 @@ def create_app():
         data['month'], data['year'] = get_monthyear(data['date'])
         # data['duration'] = 'test1'
         # data['month'], data['year'] = 'test2', 'test3'
-        
+
         # Define desired variables in X_pred order
         X_vars = ['goal','month','year','duration','country','currency','category']
 
@@ -52,7 +52,7 @@ def create_app():
         X_pred = X_pred.reshape(1,-1)
 
         # Load locally stored pickled model
-        model = pickle.load(open('ks_flask\model.pkl','rb'))
+        model = pickle.load(open('model.pkl','rb'))
         
         # Create prediction from model
         prediction = model.predict(X_pred)
