@@ -2,7 +2,7 @@ import pickle
 from sklearn.ensemble import GradientBoostingClassifier
 import numpy as np
 from flask_cors import CORS, cross_origin
-from flask import Flask, request, jsonify, json
+from flask import Flask, request, jsonify, json, url_for, redirect, session 
 from .preprocessing import get_dur, get_monthyear, predict_to_string
 
 def create_app():
@@ -63,10 +63,15 @@ def create_app():
 
             # JSONify the prediction
             prediction = json.dumps({'prediction': prediction})
-
+            session['prediction'] = prediction
+            
+            return redirect(url_for('predict'))
         if request.method == 'GET':
             # Return prediction
-            return jsonify({'prediction': prediction})
+            if 'prediction' in session:
+                return jsonify({'prediction': session['prediction']})
+            else:
+                return jsonify({'error':'No data has been submitted'})
         
 
     return app
