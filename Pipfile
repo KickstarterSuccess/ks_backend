@@ -9,7 +9,6 @@ flask = "*"
 pandas = "*"
 flask-cors = "*"
 sklearn = "*"
-
 [dev-packages]
 
 [requires]
