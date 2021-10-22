@@ -2,7 +2,7 @@ import pickle
 import sklearn
 import numpy as np
 from flask_cors import CORS, cross_origin
-from flask import Flask, request, jsonify
+from flask import Flask, json, request, jsonify
 from .preprocessing import get_dur, get_monthyear, predict_to_string
 
 def create_app():
@@ -65,8 +65,10 @@ def create_app():
         # prediction = jsonify({'prediction': prediction})
 
         # Return prediction
-        
-        return {'test': X_pred_list}
+        test = {}
+        for i in len(X_vars):
+            test[X_vars[i]] = X_pred_list[i]
+        return jsonify(test)
         
 
     return app
