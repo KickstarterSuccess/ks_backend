@@ -48,27 +48,24 @@ def create_app():
         for x in X_vars:
             X_pred_list.append(data[x])
 
-        # # Format list into 2D array for prediction
-        # X_pred = np.array(X_pred_list)
-        # X_pred = X_pred.reshape(1,-1)
+        # Format list into 2D array for prediction
+        X_pred = np.array(X_pred_list)
+        X_pred = X_pred.reshape(1,-1)
 
-        # # Load locally stored pickled model
-        # model = pickle.load(open('ks_flask/model','rb'))
+        # Load locally stored pickled model
+        model = pickle.load(open('ks_flask/model','rb'))
         
-        # # Create prediction from model
-        # prediction = model.predict(X_pred)
+        # Create prediction from model
+        prediction = model.predict(X_pred)
 
-        # # Covert array to string response
-        # prediction = predict_to_string(prediction)
+        # Covert array to string response
+        prediction = predict_to_string(prediction)
 
-        # # JSONify the prediction
-        # prediction = jsonify({'prediction': prediction})
+        # JSONify the prediction
+        prediction = jsonify({'prediction': prediction})
 
         # Return prediction
-        test = {}
-        for i in range(0, len(X_vars)):
-            test[X_vars[i]] = X_pred_list[i]
-        return jsonify(test)
+        return jsonify(prediction)
         
 
     return app
