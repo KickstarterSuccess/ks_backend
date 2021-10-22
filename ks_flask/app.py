@@ -26,7 +26,7 @@ def create_app():
         response.
         '''
         # Retrieve data from front end
-        data = request.get_json()
+        data = request.get_json(force=True)
 
         # # Run feature engineering functions
         # data['duration'] = get_dur(data['date'], data['deadline'])
